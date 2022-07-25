@@ -177,7 +177,7 @@ int main() {
 		plain[i] = MK[i];
 		plain0[i] = MK[i];
 	}
-	std::chrono::high_resolution_clock::time_point tpp1 = std::chrono::high_resolution_clock::now();
+	std::chrono::high_resolution_clock::time_point tp1 = std::chrono::high_resolution_clock::now();
 	SM4(plain0, MK, 0);		
 	SM4(plain0, MK, 1);
 	std::chrono::high_resolution_clock::time_point tp2 = std::chrono::high_resolution_clock::now();
