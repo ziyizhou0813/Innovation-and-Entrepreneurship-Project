@@ -245,6 +245,7 @@ int main() {
 	printf("%.8f\n", ((double)g - f) / CLOCKS_PER_SEC * 1000);
 	printf("加解密时间:%uns", tp);
 	cout << endl;
+	//多线程分组加密
 	std::chrono::high_resolution_clock::time_point tp1 = std::chrono::high_resolution_clock::now();
 	thread t1(decsk1,MK); 
 	thread t2(decsk2,mk); 
