@@ -177,26 +177,10 @@ int main() {
 		plain[i] = MK[i];
 		plain0[i] = MK[i];
 	}
-	for (int i = 0; i < M; i++) {
-		SM4(plain0, MK, 0);		
-		SM4(plain0, MK, 1);
-		for (int j = 0; j < 4; j++) {  
-			plain0[j] = plain[j];
-		}
-	}
-	for (int i = 0; i < 5; i++) {
-		SM4(plain0, MK, 0);
-		SM4(plain0, MK, 1);
-		for (int j = 0; j < 4; j++) {
-			plain0[j] = plain[j];
-		}
-	}
-	for (int i = 0; i < 1000; i++) {
-		SM4(plain0, MK, 0);
-		SM4(plain0, MK, 1);
-		for (int j = 0; j < 4; j++) {
-			plain0[j] = plain[j];
-		}
+	SM4(plain0, MK, 0);		
+	SM4(plain0, MK, 1);
+	for (int j = 0; j < 4; j++) {  
+		plain0[j] = plain[j];
 	}
 	return 0;
 }
