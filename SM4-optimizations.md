@@ -119,3 +119,6 @@ for (i = 4; i < 32; )//循环展开
   
   ![This is an image](https://github.com/ziyizhou0813/Innovation-and-Entrepreneurship-Project/blob/main/SM4-optimization/%E6%9F%A5%E8%A1%A8%E6%B3%95%E5%90%8E.png)
   
+  ## 项目路径
+  
+  该项目存放在仓库中"SM4-optimization"文件夹中。
