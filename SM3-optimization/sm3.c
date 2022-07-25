@@ -30,13 +30,14 @@ void intToString(unsigned char *out_hash)//int->char
 	printf("\n");
 
 }
+//左移函数
 unsigned int rotate_left(unsigned int a, unsigned int k)
 {
 	k = k % 32;
 	return ((a << k) & 0xFFFFFFFF) |  ((a & 0xFFFFFFFF) >> (32 - k));
 }
 
-
+//初始化
 int init_T()
 {
 	int i = 0;
@@ -83,6 +84,7 @@ unsigned int GG(X, Y, Z, j)
 
 #define P_1(X) X ^ (rotate_left(X, 15)) ^ (rotate_left(X, 23))
 
+//左移__mm128i类型
 __m128i left(__m128i a, int k)
 {
 	k = k % 32;
@@ -181,7 +183,7 @@ void SM3_Init() //初始值IV
 	hash[6] = 0xe38dee4d;
 	hash[7] = 0xb0fb0e4e;
 }
-
+//填充
 void Block(unsigned char *msg,unsigned int msglen){
 	int i;
 	int left = 0;
