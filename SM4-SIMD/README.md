@@ -96,3 +96,7 @@ _mm256_storeu_si256((__m256i*)c + 3, _mm256_unpackhi_epi64(_mm256_unpackhi_epi32
 
 ![This is an image](https://github.com/ziyizhou0813/Innovation-and-Entrepreneurship-Project/blob/main/SM4-SIMD/test.png)
 可以对比在SM4-optimization中未优化前时间提升很大。
+
+## 参考文献
+
+SM4的快速软件实现技术 郎欢, 张蕾, 吴文玲 http://html.rhhz.net/ZGKXYDXXB/20180205.htm#Figure1
