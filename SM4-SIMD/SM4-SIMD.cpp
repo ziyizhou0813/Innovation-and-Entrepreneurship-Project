@@ -88,7 +88,7 @@ int main()
 	u32 Y[4]; // 密文 
 	short i; // 临时变量 
     u8 in[16 * 8] = { 0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef, 0xfe, 0xdc, 0xba, 0x98, 0x76, 0x54, 0x32, 0x10 };
-	printf("**************生成轮密钥*****************\n");
+	//printf("**************生成轮密钥*****************\n");
     std::chrono::high_resolution_clock::time_point tp1 = std::chrono::high_resolution_clock::now();
 	getRK(MK, K, RK);
 	//for (i = 0; i < 32; i++) {
