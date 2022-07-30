@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <immintrin.h>
 #include<stdio.h>
+#include<chrono>
 #include "SM4-SIMD.h"
 
 #define u8 unsigned char
@@ -88,12 +89,17 @@ int main()
 	short i; // 临时变量 
     u8 in[16 * 8] = { 0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef, 0xfe, 0xdc, 0xba, 0x98, 0x76, 0x54, 0x32, 0x10 };
 	printf("**************生成轮密钥*****************\n");
+    std::chrono::high_resolution_clock::time_point tp1 = std::chrono::high_resolution_clock::now();
 	getRK(MK, K, RK);
-	for (i = 0; i < 32; i++) {
-		printf("[%2d]：%08x    ", i, RK[i]);
-		if (i % 4 == 3)	printf("\n");
-	}
+	//for (i = 0; i < 32; i++) {
+	//	printf("[%2d]：%08x    ", i, RK[i]);
+	//	if (i % 4 == 3)	printf("\n");
+	//}
     SM4(in, in, RK, 0);
+    std::chrono::high_resolution_clock::time_point tp2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<size_t, std::nano> dur = tp2 - tp1;
+    int t = dur.count();
+    printf("加密时间:%uns\n", t);
     printf("**************生成加密结果*****************\n");
     for (int j = 0; j < 8; j++) {
         for (int i = 0; i < 16; i++) {
