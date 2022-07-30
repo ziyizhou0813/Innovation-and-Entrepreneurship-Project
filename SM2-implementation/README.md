@@ -51,6 +51,9 @@ $$Ha!_{\lceil klen/v \rceil}$$
 为 $Ha_{\lceil klen/v \rceil}$最左边的$(klen-(v\times \lfloor klen/v \rfloor)$比特；
 
 令$K=Ha_1 \parallel Ha_2 \parallel \cdots \parallel Ha_{\lceil klen/v \rceil -1} \parallel Ha!_{\lceil klen/v \rceil}$。
+## 代码实现
+
+在SM2.py文件中有对代码步骤的注释，请在文件中查看
 
 ## 运行结果
 
