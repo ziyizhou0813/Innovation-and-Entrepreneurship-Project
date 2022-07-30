@@ -49,8 +49,8 @@ X[3] = _mm256_shuffle_epi8(X[3], vindex);
  for (int i = 0; i < 32; i++) {
         __m256i k =_mm256_set1_epi32((mode == 0) ? RK[i] : RK[31 - i]);//加密or解密
         R[0] = _mm256_xor_si256(_mm256_xor_si256(X[1], X[2]),_mm256_xor_si256(X[3], k));
-        R[1] = _mm256_xor_si256(X[0], _mm256_i32gather_epi32((const int*)BOX0,_mm256_and_si256(R[0], Mask), 4));
-        R[0] = _mm256_srli_epi32(R[0], 8);
+        R[1] = _mm256_xor_si256(X[0], _mm256_i32gather_epi32((const int*)BOX0,_mm256_and_si256(R[0], Mask), 4));#查表异或
+        R[0] = _mm256_srli_epi32(R[0], 8);#左移
         R[1] = _mm256_xor_si256(R[1], _mm256_i32gather_epi32((const int*)BOX1, _mm256_and_si256(R[0], Mask), 4));
         R[0] = _mm256_srli_epi32(R[0], 8);
         R[1] = _mm256_xor_si256(R[1], _mm256_i32gather_epi32((const int*)BOX2, _mm256_and_si256(R[0], Mask), 4));
@@ -77,7 +77,7 @@ $$S3[i] = ST[i] <<24;0 \leq i< 256$$
 
 $$\tau(R) = S0[R \\& 0xff] \oplus S1 [(R>>8)\\& 0xff] \oplus S2[(R>>16)\\& 0xff] \oplus S3 [R>>24]$$
 
-代码中是不断的通过并行左移（mm256_srli_epi32），并行查表（_mm256_i32gather_epi32），并行异或（_mm256_xor_si256）来实现一轮的操作。
+代码中是通过并行左移（mm256_srli_epi32），并行查表（_mm256_i32gather_epi32），并行异或（_mm256_xor_si256）来实现一轮的操作。
 
 ### 存储密文
 
@@ -85,10 +85,12 @@ $$\tau(R) = S0[R \\& 0xff] \oplus S1 [(R>>8)\\& 0xff] \oplus S2[(R>>16)\\& 0xff]
 
 具体代码如下：
 ```
+#小端变大端
 X[0] = _mm256_shuffle_epi8(X[0], vindex);
 X[1] = _mm256_shuffle_epi8(X[1], vindex);
 X[2] = _mm256_shuffle_epi8(X[2], vindex);
 X[3] = _mm256_shuffle_epi8(X[3], vindex);
+#存储
 _mm256_storeu_si256((__m256i*)c + 0, _mm256_unpacklo_epi64(_mm256_unpacklo_epi32(X[3], X[2]), _mm256_unpacklo_epi32(X[1], X[0])));
 _mm256_storeu_si256((__m256i*)c + 1, _mm256_unpackhi_epi64(_mm256_unpacklo_epi32(X[3], X[2]), _mm256_unpacklo_epi32(X[1], X[0])));
 _mm256_storeu_si256((__m256i*)c + 2, _mm256_unpacklo_epi64(_mm256_unpackhi_epi32(X[3], X[2]), _mm256_unpackhi_epi32(X[1], X[0])));
