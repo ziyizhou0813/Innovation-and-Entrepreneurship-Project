@@ -99,6 +99,7 @@ _mm256_storeu_si256((__m256i*)c + 3, _mm256_unpackhi_epi64(_mm256_unpackhi_epi32
 ## 运行结果
 
 ![This is an image](https://github.com/ziyizhou0813/Innovation-and-Entrepreneurship-Project/blob/main/SM4-SIMD/test.png)
+
 可以对比在SM4-optimization中未优化前时间提升很大。
 
 ## 参考文献
