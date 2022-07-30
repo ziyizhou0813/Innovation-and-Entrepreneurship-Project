@@ -75,7 +75,7 @@ $$S3[i] = ST[i] <<24;0 \leq i< 256$$
 
 因此，非线性变换τ即可通过掩码、移位、异或、查表操作实现。
 
-$\tau(R) = S0[R&amp;0xff] \oplus S1 [(R>>8)&amp;0xff] \oplus S2[(R>>16)&amp;0xff] \oplus S3 [R>>24]$
+$$\tau(R) = S0[R \\& 0xff] \oplus S1 [(R>>8)\\& 0xff] \oplus S2[(R>>16)\\& 0xff] \oplus S3 [R>>24]$$
 
 代码中是不断的通过并行左移（mm256_srli_epi32），并行查表（_mm256_i32gather_epi32），并行异或（_mm256_xor_si256）来实现一轮的操作。
 ## 存储密文
@@ -94,3 +94,5 @@ _mm256_storeu_si256((__m256i*)c + 3, _mm256_unpackhi_epi64(_mm256_unpackhi_epi32
 ```
 ## 运行结果
 
+![This is an image](https://github.com/ziyizhou0813/Innovation-and-Entrepreneurship-Project/blob/main/SM4-SIMD/test.png)
+可以对比在SM4-optimization中未优化前时间提升很大。
