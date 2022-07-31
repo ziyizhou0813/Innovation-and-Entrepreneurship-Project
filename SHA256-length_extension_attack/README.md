@@ -32,3 +32,6 @@
  最终结果：
  
  ![This is an image](https://github.com/ziyizhou0813/Innovation-and-Entrepreneurship-Project/blob/main/SHA256-length_extension_attack/%E4%BC%AA%E9%80%A0%E7%BB%93%E6%9E%9C.png)
+
+## 参考文献
+sha256算法参考：https://blog.csdn.net/weixin_44715221/article/details/120555567
