@@ -23,3 +23,7 @@ Merkle树类似二叉树，其叶子节点上的值通常为数据块的哈希�
 以下为该数据库打印出merkle树各个节点的hash值（按照先序遍历）
 
 ![This is an image](https://github.com/ziyizhou0813/Innovation-and-Entrepreneurship-Project/blob/main/merkle_tree/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
+
+## 参考文献
+
+https://blog.csdn.net/weixin_43137080/article/details/115653424 这里参考其搭建思想
